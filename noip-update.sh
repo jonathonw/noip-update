@@ -22,7 +22,7 @@ queryencode() {
 }
 
 log() {
-    echo "[`date --rfc-3339=seconds`] $1" | tee "$log_file"
+    echo "[`date --rfc-3339=seconds`] $1" | tee -a "$log_file"
 }
 
 if [ $# -ne 3 ]; then
