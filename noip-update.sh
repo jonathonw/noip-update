@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# NoIP updater script.  No real error handling yet; don't use this.
+# NoIP updater script.
 
 # Prerequisites (by Debian package name):
 #   bash
@@ -59,11 +59,10 @@ if [ -f "$last_ip_file" ]; then
     fi
 fi
 
-# If we've gotten down here, we should be good to perform the update
-
 # Update our stored IP address
 echo "$my_ip" > "$last_ip_file"
 
+# If we've gotten down here, we should be good to perform the update
 result=`curl -A "$user_agent" -u "$username:$password" "$noip_url?hostname=$hostname_to_update&myip=$my_ip"`
 
 if [[ "$result" == *"good"* || "$result" == *"nochg"* ]]; then
